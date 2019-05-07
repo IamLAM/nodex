@@ -5,9 +5,20 @@ var app = express();
 // --> 7)  Mount the Logger middleware here
 var r=__dirname+"/views/index.html";
 
-app.get("/",function(req,res) {
-res.send('Hello Express');
+/*app.get("/json",function(req,res) {
+    res.send('Hello Express');
    res.sendFile(r);
+  
+  if(process.env.MESSAGE_STYLE=="uppercase")
+    return res.json({"message": "HELLO JSON"});
+  else
+    return res.json({"message": "Hello json"});
+});
+*/
+app.use((req, res, next)=>{
+
+console.log(req.method+" "+req.path+" - "+req.ip);
+next();
 });
 
 app.use(express.static( __dirname + "/public"));
