@@ -3,7 +3,16 @@ var express = require('express');
 var app = express();
 
 // --> 7)  Mount the Logger middleware here
-console.log("Hello World");
+var r=__dirname+"/views/index.html";
+
+app.get("/",function(req,res) {
+res.send('Hello Express');
+   res.sendFile(r);
+});
+
+app.use(express.static( __dirname + "/public"));
+
+//console.log("Hello World");
 
 // --> 11)  Mount the body-parser middleware  here
 
