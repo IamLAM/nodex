@@ -48,12 +48,20 @@ app.route('/name').get((req, res) => {
    res.send(jsonObj);
  }).post();
 */
-
+/*
 var bodyParser = require('body-parser');
 app.use(bodyParser.urlencoded({ extended: false }));
         
-        
-        
+  */
+var bodyParser = require('body-parser');
+app.use(bodyParser.json());
+app.use( bodyParser.urlencoded({extended: false}));
+
+
+app.post('/name',function(req,res){
+
+  res.json({"name" : req.body.first +' '+req.body.last});
+});
 app.use(express.static( __dirname + "/public"));
 
 //console.log("Hello World");
