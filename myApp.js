@@ -40,13 +40,20 @@ res.json({echo:req.params.word});
 console.log(req.params.word);
 });
 */
+/*
 app.route('/name').get((req, res) => {
    var first = req.query.first;
    var last = req.query.last;
    var jsonObj = {name: first + ' ' + last};
    res.send(jsonObj);
  }).post();
+*/
 
+var bodyParser = require('body-parser');
+app.use(bodyParser.urlencoded({ extended: false }));
+        
+        
+        
 app.use(express.static( __dirname + "/public"));
 
 //console.log("Hello World");
